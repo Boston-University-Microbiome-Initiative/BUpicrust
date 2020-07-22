@@ -11,7 +11,7 @@ Add an environment variable to your `~/.bashrc`. ONLY DO THIS ONCE!
 echo "export BUpicrust=/projectnb/talbot-lab-data/msilver/BUpicrust" >> ~/.bashrc
 source ~/.bashrc
 ```
-See input arguments with `python create_inputs.py`
+See input arguments with `python create_inputs.py -h`
 
 # Tutorial
 First, complete the [BU16s](https://github.com/Boston-University-Microbiome-Initiative/BU16s) tutorial, at least through the DADA2 steps for generating ASVs.
