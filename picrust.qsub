@@ -1,0 +1,44 @@
+#!/bin/bash -l
+# USAGE: qsub -P <BU PROJECT NAME> picrust.qsub <ASV-TABLE.qza> <REP-SEQUENCES.qza> <OUTPUT DIRECTORY>
+
+#$ -j y
+#$ -pe omp 28
+
+# Load parameters
+PARAMETERS=$1
+
+INTERDIR=$OUTDIR/intermediate/picrust
+if [ -d $INTERDIR ]
+then
+    rm -rf $INTERDIR
+fi
+
+source $PARAMETERS
+
+# Run picrust
+cmd=qiime picrust2 full-pipeline \
+    --i-table $BIOMFILE \
+    --i-seq $SEQSFILE \
+    --ouput-dir $INTERDIR \
+    --p-threads $(nproc --all) \
+    --p-hsp-method $HSP \
+    --p-max-nsti $NSTI \
+    --verbose
+
+echo $cmd
+eval $cmd
+
+# Extract results
+for f in ec_metagenome.qza  ko_metagenome.qza  pathway_abundance.qza
+do
+    qiime tools extract --input-path $INTERDIR/$f --output-path $INTERDIR
+    # Convert to tsv
+    biom convert -i $INTERDIR/feature-table.biom -o $INTERDIR/feature-table.tsv --to-tsv
+    # Move to output directory and remove stupid header
+    outpath=$OUTDIR/${f%.qza}.tsv
+    sed '1d' $INTERDIR/feature-table.tsv > $outpath
+    echo "SAVED $outpath"
+done
+
+
+
