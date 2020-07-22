@@ -7,6 +7,9 @@
 # Load parameters
 PARAMETERS=$1
 
+echo ### PICRUST ###
+cat $PARAMETERS
+
 INTERDIR=$OUTDIR/intermediate/picrust
 if [ -d $INTERDIR ]
 then
