@@ -7,7 +7,7 @@
 # Load parameters
 PARAMETERS=$1
 
-echo ### PICRUST ###
+echo "### PICRUST ###"
 cat $PARAMETERS
 
 INTERDIR=$OUTDIR/intermediate/picrust
