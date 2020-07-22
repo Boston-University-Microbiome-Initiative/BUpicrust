@@ -18,14 +18,14 @@ First, complete the [BU16s](https://github.com/Boston-University-Microbiome-Init
 
 Then create an input parameters file for BUpicrust with (this assumes you used `--output_dir $BU16s/test` for BU16s):
 ```bash
-python $create_inputs.py \
+python $BUpicrust/create_inputs.py \
     --biom $BU16s/test/intermediate/dada2/table.qza \
     --seqs $BU16s/test/intermediate/dada2/representative_sequences.qza \
     --outdir $BU16s/test \
     --paramout picrust_test.sh
 ```
 
-Then submit the bath job with:
+Then submit the batch job with:
 ```bash
 qsub -P <BU PROJECT NAME> $BUpicrust/picrust.qsub picrust_test.sh
 ```

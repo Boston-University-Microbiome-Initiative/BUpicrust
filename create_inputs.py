@@ -14,7 +14,7 @@ if __name__ == '__main__':
     parser.add_argument('--hsp', help='Hidden state prediction method. Default: mp', choices=('mp', 'emp_prob', 'pic', 'scp',
     'subtree_average'))
     parser.add_argument('--nsti', help='Maximum distance from nearest sequence taxon. Default=2', default=2)
-    parser.add_argument('--paramout', help='Path to output parameter file', require=True)
+    parser.add_argument('--paramout', help='Path to output parameter file', required=True)
 
     args = parser.parse_args()
 
