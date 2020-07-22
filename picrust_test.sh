@@ -4,6 +4,7 @@ export SEQSFILE=/projectnb/talbot-lab-data/msilver/BU16s/test/intermediate/dada2
 export OUTDIR=/projectnb/talbot-lab-data/msilver/BU16s/test
 export HSP=mp
 export NSTI=2
+export CONDA_ENV=/projectnb/talbot-lab-data/msilver/.conda/envs/qiime2-2019.10
 
 # Load modules and inputs
 module purge
