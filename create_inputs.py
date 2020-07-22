@@ -40,6 +40,7 @@ if __name__ == '__main__':
              'OUTDIR',
              'HSP',
              'NSTI',
+             'CONDA_ENV'
              ]
     parameters = dict(zip(order, [biomfile, seqsfile, outdir, args.hsp, args.nsti]))
     defaults = {'CONDA_ENV': '/projectnb/talbot-lab-data/msilver/.conda/envs/qiime2-2019.10'}

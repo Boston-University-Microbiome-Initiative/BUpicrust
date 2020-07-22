@@ -22,8 +22,10 @@ python $BUpicrust/create_inputs.py \
     --biom $BU16s/test/intermediate/dada2/table.qza \
     --seqs $BU16s/test/intermediate/dada2/representative_sequences.qza \
     --outdir $BU16s/test \
-    --paramout picrust_test.sh
+    --paramout TEST_INPUTS.sh
 ```
+
+Your inputs file should look like [picrust_test.sh](picrust_test.sh) 
 
 Then submit the batch job with:
 ```bash
