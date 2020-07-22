@@ -12,7 +12,7 @@ if __name__ == '__main__':
                                        '\trepresentative_sequences.qza from QIIME2-DADA2', required=True)
     parser.add_argument('--outdir', help='Output directory', required=True)
     parser.add_argument('--hsp', help='Hidden state prediction method. Default: mp', choices=('mp', 'emp_prob', 'pic', 'scp',
-    'subtree_average'))
+    'subtree_average'), default='mp')
     parser.add_argument('--nsti', help='Maximum distance from nearest sequence taxon. Default=2', default=2)
     parser.add_argument('--paramout', help='Path to output parameter file', required=True)
 
