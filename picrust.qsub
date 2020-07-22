@@ -32,17 +32,26 @@ cmd="qiime picrust2 full-pipeline \
 echo $cmd
 eval $cmd
 
-# Extract results
-for f in ec_metagenome.qza  ko_metagenome.qza  pathway_abundance.qza
-do
-    qiime tools extract --input-path $INTERDIR/$f --output-path $INTERDIR
-    # Convert to tsv
-    biom convert -i $INTERDIR/feature-table.biom -o $INTERDIR/feature-table.tsv --to-tsv
-    # Move to output directory and remove stupid header
-    outpath=$OUTDIR/${f%.qza}.tsv
-    sed '1d' $INTERDIR/feature-table.tsv > $outpath
-    echo "SAVED $outpath"
-done
+# Extract results (I don't think these will all commonly be used, probably just pathway abundances)
+#for f in ec_metagenome.qza  ko_metagenome.qza  pathway_abundance.qza
+#do
+#    qiime tools export --input-path $INTERDIR/$f --output-path $INTERDIR
+#    # Convert to tsv
+#    biom convert -i $INTERDIR/feature-table.biom -o $INTERDIR/feature-table.tsv --to-tsv
+#    # Move to output directory and remove stupid header
+#    outpath=$OUTDIR/${f%.qza}.tsv
+#    sed '1d' $INTERDIR/feature-table.tsv > $outpath
+#    echo "SAVED $outpath"
+#done
+
+# Extract pathway abundances
+qiime tools export --input-path $INTERDIR/pathway_abundance.qza --output-path $INTERDIR
+# Convert to tsv
+biom convert -i $INTERDIR/feature-table.biom -o $INTERDIR/feature-table.tsv --to-tsv
+# Move to output directory and remove stupid header
+outpath=$OUTDIR/pathway_abundance.tsv
+sed '1d' $INTERDIR/feature-table.tsv > $outpath
+echo "SAVED $outpath"
 
 
 
