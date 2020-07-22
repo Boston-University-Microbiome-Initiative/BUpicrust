@@ -17,14 +17,14 @@ source $PARAMETERS
 conda activate $CONDA_ENV
 
 # Run picrust
-cmd=qiime picrust2 full-pipeline \
+cmd="qiime picrust2 full-pipeline \
     --i-table $BIOMFILE \
     --i-seq $SEQSFILE \
     --ouput-dir $INTERDIR \
     --p-threads $(nproc --all) \
     --p-hsp-method $HSP \
     --p-max-nsti $NSTI \
-    --verbose
+    --verbose"
 
 echo $cmd
 eval $cmd
