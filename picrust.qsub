@@ -10,7 +10,6 @@ PARAMETERS=$1
 echo "### PICRUST ###"
 cat $PARAMETERS
 
-INTERDIR=$OUTDIR/intermediate/picrust
 if [ -d $INTERDIR ]
 then
     rm -rf $INTERDIR
@@ -18,6 +17,8 @@ fi
 
 source $PARAMETERS
 conda activate $CONDA_ENV
+
+INTERDIR=$OUTDIR/intermediate/picrust
 
 # Run picrust
 cmd="qiime picrust2 full-pipeline \
